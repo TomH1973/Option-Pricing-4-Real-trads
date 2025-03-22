@@ -21,69 +21,48 @@ ITERATIONS=100
 # Create a temporary directory for profiling data
 mkdir -p /tmp/profile_data
 
-# Function to run a test with profiling
+# Function to run a test with timing
 run_profile_test() {
     local executable=$1
     local name=$2
-    local profile_data="/tmp/profile_data/${name}.out"
     local profile_file="/tmp/profile_data/${name}.prof"
     
     echo "Testing $name version..."
     echo "Running $ITERATIONS iterations..."
     
-    # Clear any previous profiling data
-    rm -f gmon.out
+    # Create a timing file
+    mkdir -p /tmp/profile_data
     
-    # Create a unique output file for this run
-    gmon_file="/tmp/profile_data/gmon.${name}.out"
-    
-    # Run the test multiple times for better profiling data
+    # Just do performance timing for now
     time (
         for i in $(seq 1 $ITERATIONS); do
-            # Run with profiling output to the specified file
-            # Note: gprof will use the file named 'gmon.out' by default
-            # Ensure we're using absolute path to executable
             /home/usr0/projects/option_tools/$executable $OPTION_PRICE $STOCK_PRICE $STRIKE $TIME $RISK_FREE $DIVIDEND > /dev/null
-            
-            # If gmon.out was created, append to our collection
-            if [ -f gmon.out ]; then
-                cat gmon.out >> "$gmon_file"
-                rm gmon.out
-            fi
         done
-    )
+    ) 2> "/tmp/profile_data/${name}.time"
     
-    # Generate profiling report if we have data
-    if [ -f "$gmon_file" ]; then
-        gprof /home/usr0/projects/option_tools/$executable "$gmon_file" > "$profile_file"
-        
-        # Extract and display the top 10 functions by self time
-        echo ""
-        echo "Top functions by self time for $name:"
-        gprof -b /home/usr0/projects/option_tools/$executable "$gmon_file" | head -n 20
-        echo ""
-        
-        echo "Detailed profile saved to $profile_file"
-    else
-        echo ""
-        echo "Warning: No profiling data was generated for $name"
-        echo "This may happen if the code executed too quickly"
-    fi
+    # Display timing results
+    echo ""
+    echo "Timing results for $name:"
+    cat "/tmp/profile_data/${name}.time"
     echo ""
 }
 
 # Run and profile the original version
-run_profile_test "./calculate_sv_v3_profile" "original"
+run_profile_test "calculate_sv_v3_profile" "original"
 
 # Run and profile the optimized version
-run_profile_test "./calculate_sv_v4" "optimized"
+run_profile_test "calculate_sv_v4" "optimized"
 
 echo "========== Comparison Summary =========="
-echo "Full profiling data is available in /tmp/profile_data/"
+echo "Timing data is available in /tmp/profile_data/"
 echo ""
-echo "To view detailed profiling results for the original version:"
-echo "gprof -b ./calculate_sv_v3_profile /tmp/profile_data/gmon.original.out | less"
+echo "Original version timing: "
+cat "/tmp/profile_data/original.time"
 echo ""
-echo "To view detailed profiling results for the optimized version:"
-echo "gprof -b ./calculate_sv_v4 /tmp/profile_data/gmon.optimized.out | less"
+echo "Optimized version timing: "
+cat "/tmp/profile_data/optimized.time"
+echo ""
+echo "Note: For more detailed profiling, you can use a profiling tool like 'perf':"
+echo "perf record /home/usr0/projects/option_tools/calculate_sv_v3 $OPTION_PRICE $STOCK_PRICE $STRIKE $TIME $RISK_FREE $DIVIDEND"
+echo "perf report"
 echo ""

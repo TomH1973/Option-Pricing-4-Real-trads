@@ -61,7 +61,7 @@ calculate_sv_v3: calculate_sv_v3.c
 	@echo "FFTW3 library found."
 	@if [ "$(BUILD_TYPE)" = "profile" ]; then \
 		echo "Building with profiling enabled"; \
-		$(CC) $(PROFFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
+		$(CC) -pg -O2 -std=c99 $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
 	else \
 		$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
 	fi
@@ -83,7 +83,7 @@ calculate_sv_v4: calculate_sv_v4.c
 	@echo "FFTW3 library found."
 	@if [ "$(BUILD_TYPE)" = "profile" ]; then \
 		echo "Building with profiling enabled"; \
-		$(CC) $(PROFFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
+		$(CC) -pg -O2 -std=c99 $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
 	else \
 		$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
 	fi
