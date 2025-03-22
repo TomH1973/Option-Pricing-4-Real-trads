@@ -50,13 +50,13 @@ fi
 R=$(echo "$RISK_FREE_RATE / 100" | bc -l)
 
 # Calculate implied volatility using the C program
-IVBS=$(~/projects/option_tools/calculate_iv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$UNDERLYING_YIELD")
+IVBS=$(/home/usr0/projects/option_tools/calculate_iv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$UNDERLYING_YIELD")
 if [[ $? -ne 0 ]]; then
   echo "Implied volatility calculation (BS) failed."
   exit 1
 fi
 
-IVSV=$(~/projects/option_tools/calculate_sv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$UNDERLYING_YIELD")
+IVSV=$(/home/usr0/projects/option_tools/calculate_sv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$UNDERLYING_YIELD")
 if [[ $? -ne 0 ]]; then
   echo "Implied volatility calculation (SV) failed."
   exit 1

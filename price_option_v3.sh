@@ -62,7 +62,7 @@ R=$(echo "$RISK_FREE_RATE / 100" | bc -l)
 Q=$UNDERLYING_YIELD
 
 # Calculate implied volatility using the Black-Scholes model
-IVBS=$(~/projects/option_tools/calculate_iv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
+IVBS=$(/home/usr0/projects/option_tools/calculate_iv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
 if [[ $? -ne 0 ]]; then
   echo "Implied volatility calculation (BS) failed."
   exit 1
@@ -70,9 +70,9 @@ fi
 
 # Calculate implied volatility using the selected stochastic volatility model
 if [ "$SV_MODEL" = "v3" ]; then
-  IVSV=$(~/projects/option_tools/calculate_sv_v3 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
+  IVSV=$(/home/usr0/projects/option_tools/calculate_sv_v3 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
 else
-  IVSV=$(~/projects/option_tools/calculate_sv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
+  IVSV=$(/home/usr0/projects/option_tools/calculate_sv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
 fi
 
 if [[ $? -ne 0 ]]; then
@@ -86,7 +86,7 @@ if [ "$SV_MODEL" = "v3" ]; then
   SV_MODEL_DESC="Stochastic Volatility (FFT)"
 fi
 
-echo   "=========== Option Pricing Summary ==========="
+echo   "============= Option Pricing Summary ============="
 printf "%-25s %12.2f\n" "Underlying Price:" "$UNDERLYING_PRICE"
 printf "%-25s %12.2f\n" "Strike:" "$STRIKE"
 printf "%-25s %16.6f\n" "Time to expiry (yrs):" "$T"
@@ -96,4 +96,4 @@ printf "%-25s %14.4f\n" "Market Option Price:" "$OPTION_PRICE"
 printf "%-25s %12.2f%%\n" "Implied Volatility(BS):" "$(echo "$IVBS"*100 | bc -l)"
 printf "%-25s %12.2f%%\n" "Implied Volatility(SV):" "$(echo "$IVSV"*100 | bc -l)"
 printf "%-25s %s\n" "SV Model Used:" "$SV_MODEL_DESC"
-echo   "=============================================="
+echo   "=================================================="

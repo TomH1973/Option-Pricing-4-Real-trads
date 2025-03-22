@@ -105,7 +105,7 @@ R=$(echo "$RISK_FREE_RATE / 100" | bc -l)
 Q=$UNDERLYING_YIELD
 
 # Calculate implied volatility using the Black-Scholes model
-IVBS=$(~/projects/option_tools/calculate_iv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
+IVBS=$(/home/usr0/projects/option_tools/calculate_iv_v2 "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
 if [[ $? -ne 0 ]]; then
   echo "Implied volatility calculation (BS) failed."
   exit 1
@@ -116,7 +116,7 @@ if [[ -n "$DEBUG_FLAG" ]]; then
   echo "Running with FFT parameters: $FFT_PARAMS"
 fi
 
-IVSV=$(~/projects/option_tools/calculate_sv_v4 $DEBUG_FLAG $FFT_PARAMS "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
+IVSV=$(/home/usr0/projects/option_tools/calculate_sv_v4 $DEBUG_FLAG $FFT_PARAMS "$OPTION_PRICE" "$UNDERLYING_PRICE" "$STRIKE" "$T" "$R" "$Q")
 if [[ $? -ne 0 ]]; then
   echo "Implied volatility calculation (SV) failed."
   exit 1

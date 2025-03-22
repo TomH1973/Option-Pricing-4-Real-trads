@@ -7,7 +7,7 @@ echo "===== Testing SV Model with Wide Parameter Range ====="
 
 # Ensure the program is compiled
 cd /home/usr0/projects/option_tools
-gcc -o calculate_sv_v2 calculate_sv_v2.c -lm
+gcc -o calculate_sv_v2 calculate_sv_v2.c -lfftw3 -lm
 
 # Function to run test
 run_test() {
@@ -21,7 +21,7 @@ run_test() {
     printf "Test: S=%.2f K=%.2f T=%.4f price=%.2f r=%.4f q=%.4f " $S $K $T $price $r $q
     
     # Run the SV calculator
-    result=$(./calculate_sv_v2 $price $S $K $T $r $q 2>/dev/null)
+    result=$(/home/usr0/projects/option_tools/calculate_sv_v2 $price $S $K $T $r $q 2>/dev/null)
     if [ $? -eq 0 ]; then
         # Convert to percentage
         pct=$(echo "$result * 100" | bc -l)

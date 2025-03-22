@@ -42,7 +42,8 @@ run_profile_test() {
         for i in $(seq 1 $ITERATIONS); do
             # Run with profiling output to the specified file
             # Note: gprof will use the file named 'gmon.out' by default
-            $executable $OPTION_PRICE $STOCK_PRICE $STRIKE $TIME $RISK_FREE $DIVIDEND > /dev/null
+            # Ensure we're using absolute path to executable
+            /home/usr0/projects/option_tools/$executable $OPTION_PRICE $STOCK_PRICE $STRIKE $TIME $RISK_FREE $DIVIDEND > /dev/null
             
             # If gmon.out was created, append to our collection
             if [ -f gmon.out ]; then
@@ -54,12 +55,12 @@ run_profile_test() {
     
     # Generate profiling report if we have data
     if [ -f "$gmon_file" ]; then
-        gprof $executable "$gmon_file" > "$profile_file"
+        gprof /home/usr0/projects/option_tools/$executable "$gmon_file" > "$profile_file"
         
         # Extract and display the top 10 functions by self time
         echo ""
         echo "Top functions by self time for $name:"
-        gprof -b $executable "$gmon_file" | head -n 20
+        gprof -b /home/usr0/projects/option_tools/$executable "$gmon_file" | head -n 20
         echo ""
         
         echo "Detailed profile saved to $profile_file"

@@ -222,8 +222,8 @@ double heston_call_fft(double S, double K, double v0, double kappa, double theta
         
         // Skip v=0 to avoid numerical issues
         if (v < 1e-10) {
-            in[j][0] = 0.0;
-            in[j][1] = 0.0;
+            // Set to zero complex value
+            in[j] = 0.0 + 0.0 * I;
             continue;
         }
         
@@ -235,9 +235,8 @@ double heston_call_fft(double S, double K, double v0, double kappa, double theta
         double complex psi;
         psi = cf / (alpha*alpha + alpha - v*v + I*(2*alpha + 1)*v);
         
-        // Store real and imaginary parts
-        in[j][0] = creal(psi);
-        in[j][1] = cimag(psi);
+        // Store complex value - proper FFTW complex access
+        in[j] = psi;
     }
     
     // Execute FFT
@@ -253,7 +252,7 @@ double heston_call_fft(double S, double K, double v0, double kappa, double theta
     
     // Calculate call price using FFT output
     double call_price = S * exp(-q * T - alpha * k) * 
-                        (out[closest_idx][0] * exp(x0) * eta / M_PI);
+                        (creal(out[closest_idx]) * exp(x0) * eta / M_PI);
     
     // Cleanup
     fftw_destroy_plan(plan);

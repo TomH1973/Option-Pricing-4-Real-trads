@@ -35,7 +35,17 @@ calculate_sv: calculate_sv.c
 	$(CC) $(CFLAGS) -o $@ $< $(MATH_LIBS)
 
 calculate_sv_v2: calculate_sv_v2.c
-	$(CC) $(CFLAGS) -o $@ $< $(MATH_LIBS)
+	@echo "Checking for FFTW3 library..."
+	@if [ ! -f /usr/include/fftw3.h ] && [ ! -f /usr/local/include/fftw3.h ] && ! pkg-config --exists fftw3; then \
+		echo "FFTW3 development headers not found."; \
+		echo "Please install the FFTW3 development package:"; \
+		echo "  Ubuntu/Debian: sudo apt-get install libfftw3-dev"; \
+		echo "  Fedora/RHEL:   sudo dnf install fftw-devel"; \
+		echo "  macOS:         brew install fftw"; \
+		exit 1; \
+	fi
+	@echo "FFTW3 library found."
+	$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS)
 
 # FFT-based implementations
 calculate_sv_v3: calculate_sv_v3.c
