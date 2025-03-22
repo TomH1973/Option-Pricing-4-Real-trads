@@ -11,7 +11,7 @@ FFTW_CFLAGS := $(shell pkg-config --cflags fftw3 2>/dev/null || echo "-I/usr/inc
 FFTW_LIBS := $(shell pkg-config --libs fftw3 2>/dev/null || echo "-lfftw3 -lm")
 
 # Target executables
-TARGETS = calculate_iv calculate_iv_v1 calculate_iv_v2 calculate_sv calculate_sv_v2 calculate_sv_v3
+TARGETS = calculate_iv calculate_iv_v1 calculate_iv_v2 calculate_sv calculate_sv_v2 calculate_sv_v3 calculate_sv_v4
 
 # Default target
 all: $(TARGETS)
@@ -33,7 +33,7 @@ calculate_sv: calculate_sv.c
 calculate_sv_v2: calculate_sv_v2.c
 	$(CC) $(CFLAGS) -o $@ $< $(MATH_LIBS)
 
-# FFT-based implementation
+# FFT-based implementations
 calculate_sv_v3: calculate_sv_v3.c
 	@echo "Checking for FFTW3 library..."
 	@if [ ! -f /usr/include/fftw3.h ] && [ ! -f /usr/local/include/fftw3.h ] && ! pkg-config --exists fftw3; then \
@@ -51,6 +51,19 @@ calculate_sv_v3: calculate_sv_v3.c
 		echo "Created symbolic link 'calculate_sv_v3_link'"; \
 	fi
 
+calculate_sv_v4: calculate_sv_v4.c
+	@echo "Checking for FFTW3 library..."
+	@if [ ! -f /usr/include/fftw3.h ] && [ ! -f /usr/local/include/fftw3.h ] && ! pkg-config --exists fftw3; then \
+		echo "FFTW3 development headers not found."; \
+		echo "Please install the FFTW3 development package:"; \
+		echo "  Ubuntu/Debian: sudo apt-get install libfftw3-dev"; \
+		echo "  Fedora/RHEL:   sudo dnf install fftw-devel"; \
+		echo "  macOS:         brew install fftw"; \
+		exit 1; \
+	fi
+	@echo "FFTW3 library found."
+	$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS)
+
 # Test targets
 test_iv: calculate_iv_v2
 	@echo "Testing Black-Scholes implementation..."
@@ -61,10 +74,16 @@ test_sv: calculate_sv_v2
 	./calculate_sv_v2 5.0 100.0 100.0 0.25 0.05 0.02
 
 test_sv_v3: calculate_sv_v3
-	@echo "Testing FFT-based Heston implementation..."
+	@echo "Testing FFT-based Heston implementation (v3)..."
 	./calculate_sv_v3 --debug 5.0 100.0 100.0 0.25 0.05 0.02
 
-test: test_iv test_sv test_sv_v3
+test_sv_v4: calculate_sv_v4
+	@echo "Testing FFT-based Heston implementation (v4) with default settings..."
+	./calculate_sv_v4 --debug 5.0 100.0 100.0 0.25 0.05 0.02
+	@echo "Testing with custom FFT parameters..."
+	./calculate_sv_v4 --debug --fft-n=8192 --alpha=1.75 --eta=0.025 5.0 100.0 100.0 0.25 0.05 0.02
+
+test: test_iv test_sv test_sv_v3 test_sv_v4
 
 # Run comprehensive tests across various parameters
 test_range: calculate_sv_v2
