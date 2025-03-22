@@ -34,25 +34,40 @@ run_profile_test() {
     # Clear any previous profiling data
     rm -f gmon.out
     
+    # Create a unique output file for this run
+    gmon_file="/tmp/profile_data/gmon.${name}.out"
+    
     # Run the test multiple times for better profiling data
     time (
         for i in $(seq 1 $ITERATIONS); do
+            # Run with profiling output to the specified file
+            # Note: gprof will use the file named 'gmon.out' by default
             $executable $OPTION_PRICE $STOCK_PRICE $STRIKE $TIME $RISK_FREE $DIVIDEND > /dev/null
+            
+            # If gmon.out was created, append to our collection
+            if [ -f gmon.out ]; then
+                cat gmon.out >> "$gmon_file"
+                rm gmon.out
+            fi
         done
     )
     
-    # Generate profiling report
-    gprof $executable gmon.out > "$profile_file"
-    
-    # Extract and display the top 10 functions by self time
-    echo ""
-    echo "Top functions by self time for $name:"
-    gprof -b $executable gmon.out | head -n 20
-    echo ""
-    
-    # Save the output for detailed analysis
-    cp gmon.out "/tmp/profile_data/gmon.${name}.out"
-    echo "Detailed profile saved to $profile_file"
+    # Generate profiling report if we have data
+    if [ -f "$gmon_file" ]; then
+        gprof $executable "$gmon_file" > "$profile_file"
+        
+        # Extract and display the top 10 functions by self time
+        echo ""
+        echo "Top functions by self time for $name:"
+        gprof -b $executable "$gmon_file" | head -n 20
+        echo ""
+        
+        echo "Detailed profile saved to $profile_file"
+    else
+        echo ""
+        echo "Warning: No profiling data was generated for $name"
+        echo "This may happen if the code executed too quickly"
+    fi
     echo ""
 }
 
