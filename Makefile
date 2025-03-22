@@ -4,7 +4,11 @@
 # Compiler settings
 CC = gcc
 CFLAGS = -Wall -Wextra -O3
+PROFFLAGS = -pg -O2 -std=c99
 MATH_LIBS = -lm
+
+# Build type - set to 'profile' for profiling build, default is normal build
+BUILD_TYPE ?= normal
 
 # FFT library detection using pkg-config if available
 FFTW_CFLAGS := $(shell pkg-config --cflags fftw3 2>/dev/null || echo "-I/usr/include")
@@ -45,7 +49,12 @@ calculate_sv_v3: calculate_sv_v3.c
 		exit 1; \
 	fi
 	@echo "FFTW3 library found."
-	$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS)
+	@if [ "$(BUILD_TYPE)" = "profile" ]; then \
+		echo "Building with profiling enabled"; \
+		$(CC) $(PROFFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
+	else \
+		$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
+	fi
 	@if [ ! -L calculate_sv_v3_link ]; then \
 		ln -sf calculate_sv_v3 calculate_sv_v3_link; \
 		echo "Created symbolic link 'calculate_sv_v3_link'"; \
@@ -62,7 +71,12 @@ calculate_sv_v4: calculate_sv_v4.c
 		exit 1; \
 	fi
 	@echo "FFTW3 library found."
-	$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS)
+	@if [ "$(BUILD_TYPE)" = "profile" ]; then \
+		echo "Building with profiling enabled"; \
+		$(CC) $(PROFFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
+	else \
+		$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
+	fi
 
 # Test targets
 test_iv: calculate_iv_v2
@@ -89,9 +103,26 @@ test: test_iv test_sv test_sv_v3 test_sv_v4
 test_range: calculate_sv_v2
 	./test_sv_range.sh
 
+# Profile targets
+profile_builds: BUILD_TYPE=profile
+profile_builds:
+	@echo "Building with profiling instrumentation..."
+	$(MAKE) calculate_sv_v3
+	$(MAKE) calculate_sv_v4
+	@echo "Profiling builds complete - run profile_compare.sh to test"
+
+profile_compare: profile_builds
+	@echo "Running profile comparison..."
+	./profile_compare.sh
+
+benchmark: profile_builds
+	@echo "Running FFT parameter benchmark..."
+	./benchmark_fft.sh
+
 # Clean up
 clean:
-	rm -f $(TARGETS) calculate_sv_v3_link *.o
+	rm -f $(TARGETS) calculate_sv_v3_link *.o gmon.out
+	rm -rf /tmp/profile_data
 
 # Install to user's bin directory
 install: all
@@ -105,17 +136,26 @@ help:
 	@echo "Option Pricing Tools Makefile"
 	@echo ""
 	@echo "Targets:"
-	@echo "  all         - Build all calculator executables"
-	@echo "  test        - Run basic tests for all implementations"
-	@echo "  test_range  - Run comprehensive parameter tests"
-	@echo "  clean       - Remove built executables"
-	@echo "  install     - Install executables to ~/bin"
+	@echo "  all             - Build all calculator executables"
+	@echo "  test            - Run basic tests for all implementations"
+	@echo "  test_range      - Run comprehensive parameter tests"
+	@echo "  clean           - Remove built executables"
+	@echo "  install         - Install executables to ~/bin"
+	@echo ""
+	@echo "Profile targets:"
+	@echo "  profile_builds  - Build all implementations with profiling enabled"
+	@echo "  profile_compare - Run profile comparison between v3 and v4"
+	@echo "  benchmark       - Run benchmarks with different FFT parameters"
 	@echo ""
 	@echo "Individual targets:"
 	@echo "  calculate_iv, calculate_iv_v1, calculate_iv_v2"
-	@echo "  calculate_sv, calculate_sv_v2, calculate_sv_v3"
+	@echo "  calculate_sv, calculate_sv_v2, calculate_sv_v3, calculate_sv_v4"
 	@echo ""
 	@echo "Individual tests:"
-	@echo "  test_iv, test_sv, test_sv_v3"
+	@echo "  test_iv, test_sv, test_sv_v3, test_sv_v4"
+	@echo ""
+	@echo "Build types:"
+	@echo "  make BUILD_TYPE=normal  # Default optimized build"
+	@echo "  make BUILD_TYPE=profile # Build with profiling instrumentation"
 
-.PHONY: all clean test test_iv test_sv test_sv_v3 test_range install help
+.PHONY: all clean test test_iv test_sv test_sv_v3 test_sv_v4 test_range install help profile_builds profile_compare benchmark
