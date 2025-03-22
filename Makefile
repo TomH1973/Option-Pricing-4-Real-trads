@@ -45,7 +45,12 @@ calculate_sv_v2: calculate_sv_v2.c
 		exit 1; \
 	fi
 	@echo "FFTW3 library found."
-	$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS)
+	@if [ "$(BUILD_TYPE)" = "profile" ]; then \
+		echo "Building with profiling enabled"; \
+		$(CC) -pg -O2 -std=c99 $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
+	else \
+		$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
+	fi
 
 # FFT-based implementations
 calculate_sv_v3: calculate_sv_v3.c
@@ -119,6 +124,8 @@ profile_builds:
 	@echo "Building with profiling instrumentation..."
 	$(MAKE) calculate_sv_v3
 	$(MAKE) calculate_sv_v4
+	@echo "Creating dedicated profiling binary for v3..."
+	$(CC) -pg -O2 -std=c99 $(FFTW_CFLAGS) -o calculate_sv_v3_profile calculate_sv_v3.c $(FFTW_LIBS)
 	@echo "Profiling builds complete - run profile_compare.sh to test"
 
 profile_compare: profile_builds
@@ -131,7 +138,7 @@ benchmark: profile_builds
 
 # Clean up
 clean:
-	rm -f $(TARGETS) calculate_sv_v3_link *.o gmon.out
+	rm -f $(TARGETS) calculate_sv_v3_link calculate_sv_v3_profile *.o gmon.out
 	rm -rf /tmp/profile_data
 
 # Install to user's bin directory
