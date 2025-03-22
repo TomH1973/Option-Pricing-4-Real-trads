@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define _USE_MATH_DEFINES
 #include <math.h>
 #include <complex.h>
 #include <string.h>
@@ -8,6 +9,11 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <getopt.h>
+
+// Define M_PI if it's not already defined
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 // FFT implementation requires fftw library
 #include <fftw3.h>
@@ -57,6 +63,21 @@ typedef struct {
     double eta;
 } FFTCache;
 
+// Precomputed values for FFT optimization
+typedef struct {
+    // Simpson's rule weights (precomputed)
+    double* simpson_weights;
+    // Precomputed exponential terms in FFT input
+    double complex* exp_terms;
+    // Flag to indicate if precomputed values are valid
+    bool is_valid;
+    // Parameters for which values were precomputed
+    int fft_n;
+    double eta;
+    double alpha;
+    double S;
+} FFTPrecomputed;
+
 // Global cache - we'll keep just one entry for simplicity
 // Initialize with proper values to track cache state
 static FFTCache g_cache = {
@@ -79,12 +100,25 @@ static FFTCache g_cache = {
     .eta = 0.0
 };
 
+// Global precomputed values
+static FFTPrecomputed g_precomputed = {
+    .simpson_weights = NULL,
+    .exp_terms = NULL,
+    .is_valid = false,
+    .fft_n = 0,
+    .eta = 0.0,
+    .alpha = 0.0,
+    .S = 0.0
+};
+
 // Forward declarations
 double black_scholes_call(double S, double K, double T, double r, double q, double sigma);
 double bs_implied_vol(double market_price, double S, double K, double T, double r, double q);
 void init_fft_cache(double S, double r, double q, double T, 
                    double v0, double kappa, double theta, double sigma, double rho);
 double get_cached_option_price(double K);
+void precompute_fft_values(double S);
+void cleanup_precomputed_values(void);
 
 // Complex characteristic function for Heston model
 double complex cf_heston(double complex phi, double S, double v0, double kappa, 
@@ -282,7 +316,13 @@ void init_fft_cache(double S, double r, double q, double T,
     // Lambda depends on FFT parameters
     double lambda = 2 * M_PI / (g_fft_n * g_eta);
     
-    // Fill in the FFT input array
+    // Precompute invariant parts of the FFT calculation
+    precompute_fft_values(S);
+    
+    // Precomputed discount factor
+    double discount = exp(-r * T);
+    
+    // Fill in the FFT input array - OPTIMIZED VERSION using precomputed values
     for (int i = 0; i < g_fft_n; i++) {
         double v = i * g_eta;
         
@@ -294,15 +334,18 @@ void init_fft_cache(double S, double r, double q, double T,
         // Calculate modified characteristic function for Carr-Madan
         double complex phi = cf_heston(v - (g_alpha + 1) * I, S, v0, kappa, theta, sigma, rho, r, q, T);
         
-        // Apply Carr-Madan formula
-        double complex modified_cf = cexp(-r * T) * phi / (g_alpha*g_alpha + g_alpha - v*v + I*(2*g_alpha + 1)*v);
+        // Apply Carr-Madan formula with precomputed discount factor
+        double complex denom = g_alpha*g_alpha + g_alpha - v*v + I*(2*g_alpha + 1)*v;
+        double complex modified_cf = discount * phi / denom;
         
-        // Apply Simpson's rule weights for integration
-        double simpson_weight = (i == 0) ? 1.0/3.0 : 
-                               ((i % 2 == 1) ? 4.0/3.0 : 2.0/3.0);
+        // Use precomputed Simpson's rule weights and eta scaling
+        double simpson_weight = g_precomputed.simpson_weights[i];
         
-        // Set FFT input array
-        in[i] = modified_cf * simpson_weight * g_eta * exp(-I * v * log(S));
+        // Use precomputed exponential term
+        double complex exp_term = g_precomputed.exp_terms[i];
+        
+        // Set FFT input array - more efficient with precomputed values
+        in[i] = modified_cf * simpson_weight * g_eta * exp_term;
     }
     
     // Create and execute FFT plan
@@ -311,16 +354,20 @@ void init_fft_cache(double S, double r, double q, double T,
     
     // Extract option prices from FFT results
     double log_S = log(S);
+    double inv_pi = 1.0 / M_PI; // Precompute 1/PI
+    double range_factor = 2.0 * g_log_strike_range / g_fft_n; // Precompute this constant
+    
     for (int i = 0; i < g_fft_n; i++) {
-        // Calculate log strike
-        double log_K = log_S - g_log_strike_range + (2.0 * g_log_strike_range * i) / g_fft_n;
+        // Calculate log strike - using precomputed constants
+        double log_K = log_S - g_log_strike_range + range_factor * i;
         double K = exp(log_K);
         
         // Store strike
         g_cache.strikes[i] = K;
         
-        // Extract price
-        double price_part = creal(out[i]) * exp(-g_alpha * log_K) / M_PI;
+        // Extract price - using precomputed 1/PI
+        double exp_factor = exp(-g_alpha * log_K) * inv_pi;
+        double price_part = creal(out[i]) * exp_factor;
         
         // Ensure non-negative prices
         g_cache.prices[i] = fmax(0.0, price_part);
@@ -740,6 +787,76 @@ void print_usage(const char* program_name) {
     fprintf(stderr, "  FFT_CACHE_TOLERANCE   Set parameter tolerance for cache reuse\n");
 }
 
+// Precompute invariant values used in FFT calculation
+void precompute_fft_values(double S) {
+    // Check if precomputed values are already valid for current parameters
+    if (g_precomputed.is_valid && 
+        g_precomputed.fft_n == g_fft_n && 
+        g_precomputed.eta == g_eta &&
+        g_precomputed.alpha == g_alpha &&
+        fabs(g_precomputed.S - S) < g_cache_tolerance) {
+        if (g_debug) {
+            fprintf(stderr, "Debug: Using existing precomputed FFT values\n");
+        }
+        return;
+    }
+    
+    if (g_debug) {
+        fprintf(stderr, "Debug: Precomputing FFT values for N=%d, eta=%.4f, alpha=%.2f, S=%.2f\n", 
+                g_fft_n, g_eta, g_alpha, S);
+    }
+    
+    // Free existing precomputed values if they exist
+    cleanup_precomputed_values();
+    
+    // Allocate memory for precomputed values
+    g_precomputed.simpson_weights = (double*)malloc(g_fft_n * sizeof(double));
+    g_precomputed.exp_terms = (double complex*)malloc(g_fft_n * sizeof(double complex));
+    
+    if (g_precomputed.simpson_weights == NULL || g_precomputed.exp_terms == NULL) {
+        fprintf(stderr, "Error: Memory allocation for precomputed FFT values failed\n");
+        exit(1);
+    }
+    
+    // Precompute Simpson's rule weights
+    for (int i = 0; i < g_fft_n; i++) {
+        g_precomputed.simpson_weights[i] = (i == 0) ? 1.0/3.0 : 
+                                          ((i % 2 == 1) ? 4.0/3.0 : 2.0/3.0);
+    }
+    
+    // Precompute exponential terms that depend only on the grid and S
+    double log_S = log(S);
+    for (int i = 0; i < g_fft_n; i++) {
+        double v = i * g_eta;
+        if (fabs(v) < 1e-10) v = 1e-10; // Avoid numerical issues
+        
+        // The exp(-I * v * log(S)) term depends only on v and S
+        g_precomputed.exp_terms[i] = exp(-I * v * log_S);
+    }
+    
+    // Update metadata for precomputed values
+    g_precomputed.fft_n = g_fft_n;
+    g_precomputed.eta = g_eta;
+    g_precomputed.alpha = g_alpha;
+    g_precomputed.S = S;
+    g_precomputed.is_valid = true;
+}
+
+// Free allocated memory for precomputed values
+void cleanup_precomputed_values() {
+    if (g_precomputed.simpson_weights != NULL) {
+        free(g_precomputed.simpson_weights);
+        g_precomputed.simpson_weights = NULL;
+    }
+    
+    if (g_precomputed.exp_terms != NULL) {
+        free(g_precomputed.exp_terms);
+        g_precomputed.exp_terms = NULL;
+    }
+    
+    g_precomputed.is_valid = false;
+}
+
 // Free allocated memory in FFT cache
 void cleanup_fft_cache() {
     if (g_cache.prices != NULL) {
@@ -753,6 +870,9 @@ void cleanup_fft_cache() {
     }
     
     g_cache.is_valid = false;
+    
+    // Also clean up precomputed values
+    cleanup_precomputed_values();
 }
 
 int main(int argc, char *argv[]) {

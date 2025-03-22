@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define _USE_MATH_DEFINES
 #include <math.h>
 #include <complex.h>
 #include <string.h>
@@ -7,6 +8,11 @@
 #include <errno.h>
 #include <stdbool.h>
 #include <unistd.h>
+
+// Define M_PI if it's not already defined
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 // FFT implementation requires fftw library
 #include <fftw3.h>
