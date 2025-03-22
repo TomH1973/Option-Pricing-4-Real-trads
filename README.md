@@ -22,30 +22,32 @@ This project provides robust implementations of various option pricing models, w
 - **Performance Optimizations**
   - Caching of FFT results for repeated calculations
   - Efficient parameter validation and interpolation
+  - Precomputed FFT values for improved performance (v4)
 
 - **Utilities**
   - Market data integration (risk-free rates)
-  - Comprehensive testing and evaluation scripts
+  - Profiling and benchmarking tools
 
 ## Installation
 
 ### Prerequisites
 
 - GCC or compatible C compiler
-- FFTW3 library (for FFT-based implementation)
+- FFTW3 library (for FFT-based implementations)
 - Bash shell environment
 
 ### Compiling
 
-Standard implementations:
+Use the provided Makefile:
 ```bash
-gcc -o calculate_iv_v2 calculate_iv_v2.c -lm
-gcc -o calculate_sv_v2 calculate_sv_v2.c -lm
-```
+# Build all implementations
+make all
 
-FFT-based implementation:
-```bash
-./compile_sv_v3.sh
+# Build a specific version
+make calculate_sv_v2
+
+# Build with profiling enabled
+make BUILD_TYPE=profile profile_builds
 ```
 
 ## Usage
@@ -62,11 +64,16 @@ Example:
 ./price_option.sh 5616 5600 9 118.5 0.013
 ```
 
-### Stochastic Volatility Model
+### Stochastic Volatility Models
 
 Calculate option values with the Heston model (v3):
 ```bash
 ./price_option_v3.sh UNDERLYING_PRICE STRIKE DAYS_TO_EXPIRY OPTION_PRICE UNDERLYING_YIELD v3
+```
+
+Use the optimized FFT implementation (v4) with custom parameters:
+```bash
+./price_option_v4.sh --fft-n=8192 --alpha=1.75 --eta=0.025 UNDERLYING_PRICE STRIKE DAYS_TO_EXPIRY OPTION_PRICE UNDERLYING_YIELD
 ```
 
 ### Running Tests
@@ -74,6 +81,16 @@ Calculate option values with the Heston model (v3):
 Test the stochastic volatility model across different parameters:
 ```bash
 ./test_sv_range.sh
+```
+
+Run FFT parameter sensitivity tests:
+```bash
+./test_fft_params.sh
+```
+
+Compare performance between implementations:
+```bash
+./profile_compare.sh
 ```
 
 ## Technical Details
@@ -99,19 +116,54 @@ The FFT-based approach:
 - Uses the Carr-Madan method for European options
 - Efficiently computes option prices for multiple strikes simultaneously
 - Provides caching to avoid redundant calculations
+- v4 implementation includes precomputed FFT input values for better performance
 
 ## Project Structure
 
 - `calculate_iv*.c`: Black-Scholes implementations
 - `calculate_sv*.c`: Stochastic volatility implementations
-- `price_option.sh`: Main interface script
-- `price_option_v3.sh`: Enhanced script for FFT-based implementation
-- `test_sv_range.sh`: Test script for model evaluation
-- `compile_sv_v3.sh`: Compilation script for FFT implementation
+  - `calculate_sv_v2.c`: Heston model with FFTW
+  - `calculate_sv_v3.c`: FFT-based implementation with caching
+  - `calculate_sv_v4.c`: Optimized FFT implementation with precomputed values
+- `price_option*.sh`: Shell interfaces for different implementations
+- `test_*.sh`: Test and benchmark scripts
+- `profile_compare.sh`: Performance comparison tool
 
-## Future Enhancements
+## TODOs and Future Enhancements
 
-See [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) for detailed roadmap of planned improvements.
+### Short-Term (High Priority)
+
+1. **Caching Improvements**
+   - [ ] Implement a more tolerant caching strategy with parameter sensitivity awareness
+   - [ ] Create multi-level cache for different parameter sets
+   - [ ] Add adaptive tolerance mechanism based on parameter sensitivity
+
+2. **Error Handling**
+   - [ ] Enhance error reporting and propagation from C programs to shell scripts
+   - [ ] Add better fallback mechanisms when calculations fail
+
+### Medium-Term
+
+1. **Model Enhancements**
+   - [ ] Implement full Heston parameter calibration using market data
+   - [ ] Add more sophisticated volatility surface modeling
+   - [ ] Implement additional stochastic volatility models (SABR, etc.)
+
+2. **Performance Optimization**
+   - [ ] Multi-threading support for parameter sweeps and calibration
+   - [ ] Cache persistence between program invocations
+
+### Long-Term Vision
+
+1. **Architecture Improvements**
+   - [ ] Refactor to a shared library architecture
+   - [ ] Create unified API for all pricing models
+   - [ ] Implement language bindings for Python/R/etc.
+
+2. **Feature Expansion**
+   - [ ] Support for exotic options (barriers, Asians, etc.)
+   - [ ] Real-time market data integration
+   - [ ] Visualization of volatility surfaces and option Greeks
 
 ## License
 
