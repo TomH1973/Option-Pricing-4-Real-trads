@@ -86,7 +86,7 @@ if [ "$SV_MODEL" = "v3" ]; then
   SV_MODEL_DESC="Stochastic Volatility (FFT)"
 fi
 
-echo   "============= Option Pricing Summary ============="
+echo   "=============== Option Pricing Summary ==============="
 printf "%-25s %12.2f\n" "Underlying Price:" "$UNDERLYING_PRICE"
 printf "%-25s %12.2f\n" "Strike:" "$STRIKE"
 printf "%-25s %16.6f\n" "Time to expiry (yrs):" "$T"
@@ -96,4 +96,4 @@ printf "%-25s %14.4f\n" "Market Option Price:" "$OPTION_PRICE"
 printf "%-25s %12.2f%%\n" "Implied Volatility(BS):" "$(echo "$IVBS"*100 | bc -l)"
 printf "%-25s %12.2f%%\n" "Implied Volatility(SV):" "$(echo "$IVSV"*100 | bc -l)"
 printf "%-25s %s\n" "SV Model Used:" "$SV_MODEL_DESC"
-echo   "=================================================="
+echo   "======================================================"

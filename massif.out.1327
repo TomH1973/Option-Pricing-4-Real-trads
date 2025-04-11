@@ -1,0 +1,1226 @@
+desc: (none)
+cmd: ./calculate_sv_v3 118.5 5616 5600 0.024641 0.04409 0.013
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=905932
+mem_heap_B=196608
+mem_heap_extra_B=64
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=10778308
+mem_heap_B=196640
+mem_heap_extra_B=88
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=11209125
+mem_heap_B=337336
+mem_heap_extra_B=44456
+mem_stacks_B=0
+heap_tree=peak
+n5: 337336 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 140728 0x487C0A4: fftw_malloc_plain (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+  n2: 79872 0x487D8C6: ??? (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n3: 79872 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 44384 0x48C4800: fftw_rdft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 44384 0x496DFD0: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 44384 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 44384 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 44384 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 44384 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 44384 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 44384 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+            n1: 44384 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 44384 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n0: 44384 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n1: 35488 0x48C47F1: fftw_rdft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 35488 0x496DFD0: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 35488 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 35488 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 35488 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 35488 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 35488 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 35488 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+            n1: 35488 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 35488 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n0: 35488 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 9 places, all below massif's threshold (1.00%)
+  n4: 60352 0x4880658: fftw_mksolver (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n3: 34424 0x4885CC8: fftw_mksolver_ct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 15480 0x48867A6: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n1: 15480 0x4886812: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n0: 3464 in 4 places, all below massif's threshold (1.00%)
+   n0: 13688 in 42 places, all below massif's threshold (1.00%)
+   n1: 6120 0x488857C: fftw_mksolver_dft_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898A7: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 6120 0x48885BC: fftw_mksolver_dft_directbuf (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898BD: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+  n0: 504 in 4 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A538: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+ n1: 65536 0x10A545: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+ n1: 32768 0x10A97B: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+ n1: 32768 0x10A98F: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+#-----------
+snapshot=4
+#-----------
+time=12136600
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=25216928
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=25996551
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=39086333
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=39865959
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=52955915
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=detailed
+n5: 314840 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 118232 0x487C0A4: fftw_malloc_plain (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+  n6: 73408 0x4880658: fftw_mksolver (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n3: 34424 0x4885CC8: fftw_mksolver_ct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 15480 0x48867A6: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n1: 15480 0x4886812: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n0: 3464 in 4 places, all below massif's threshold (1.00%)
+   n2: 11776 0x48D3927: fftw_mksolver_hc2c (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 5888 0x48D4BFD: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+    n1: 5888 0x48D4C2A: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+   n0: 9784 in 47 places, all below massif's threshold (1.00%)
+   n1: 6120 0x488857C: fftw_mksolver_dft_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898A7: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 6120 0x48885BC: fftw_mksolver_dft_directbuf (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898BD: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 5184 0x48C2827: fftw_mksolver_hc2hc (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n0: 5184 in 3 places, all below massif's threshold (1.00%)
+  n2: 44384 0x487D8C6: ??? (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n2: 44384 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 44384 0x48C4800: fftw_rdft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 44384 0x496DFD0: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 44384 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 44384 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 44384 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 44384 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 44384 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 44384 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+            n1: 44384 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 44384 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n0: 44384 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 0 in 9 places, all below massif's threshold (1.00%)
+  n0: 440 in 11 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A538: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A545: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 32768 0x10A97B: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+ n1: 32768 0x10A98F: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+#-----------
+snapshot=10
+#-----------
+time=53735560
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=66881259
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=67660885
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=80817038
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=81596664
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=94762615
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=95542260
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=106049929
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=106829555
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=116617672
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=detailed
+n5: 314840 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 118232 0x487C0A4: fftw_malloc_plain (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+  n6: 73408 0x4880658: fftw_mksolver (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n3: 34424 0x4885CC8: fftw_mksolver_ct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 15480 0x48867A6: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n1: 15480 0x4886812: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n0: 3464 in 4 places, all below massif's threshold (1.00%)
+   n2: 11776 0x48D3927: fftw_mksolver_hc2c (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 5888 0x48D4BFD: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+    n1: 5888 0x48D4C2A: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+   n0: 9784 in 47 places, all below massif's threshold (1.00%)
+   n1: 6120 0x488857C: fftw_mksolver_dft_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898A7: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 6120 0x48885BC: fftw_mksolver_dft_directbuf (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898BD: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 5184 0x48C2827: fftw_mksolver_hc2hc (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n0: 5184 in 3 places, all below massif's threshold (1.00%)
+  n2: 44384 0x487D8C6: ??? (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n2: 44384 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 44384 0x48C4800: fftw_rdft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 44384 0x496DFD0: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 44384 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 44384 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 44384 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 44384 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 44384 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 44384 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+            n1: 44384 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 44384 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n0: 44384 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 0 in 9 places, all below massif's threshold (1.00%)
+  n0: 440 in 11 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A538: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A545: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 32768 0x10A97B: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+ n1: 32768 0x10A98F: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+#-----------
+snapshot=20
+#-----------
+time=117397298
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=126707860
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=127487505
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=137250107
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=147216031
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=156796590
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=157576235
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=166989556
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=detailed
+n5: 314840 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 118232 0x487C0A4: fftw_malloc_plain (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+  n6: 73408 0x4880658: fftw_mksolver (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n3: 34424 0x4885CC8: fftw_mksolver_ct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 15480 0x48867A6: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n1: 15480 0x4886812: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n0: 3464 in 4 places, all below massif's threshold (1.00%)
+   n2: 11776 0x48D3927: fftw_mksolver_hc2c (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 5888 0x48D4BFD: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+    n1: 5888 0x48D4C2A: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+   n0: 9784 in 47 places, all below massif's threshold (1.00%)
+   n1: 6120 0x488857C: fftw_mksolver_dft_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898A7: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 6120 0x48885BC: fftw_mksolver_dft_directbuf (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898BD: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 5184 0x48C2827: fftw_mksolver_hc2hc (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n0: 5184 in 3 places, all below massif's threshold (1.00%)
+  n2: 44384 0x487D8C6: ??? (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n2: 44384 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 44384 0x48C4800: fftw_rdft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 44384 0x496DFD0: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 44384 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 44384 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 44384 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 44384 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 44384 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 44384 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+            n1: 44384 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 44384 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n0: 44384 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 0 in 9 places, all below massif's threshold (1.00%)
+  n0: 440 in 11 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A538: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A545: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 32768 0x10A97B: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+ n1: 32768 0x10A98F: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+#-----------
+snapshot=28
+#-----------
+time=176671214
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=186011826
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=186791475
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=199880639
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=200660265
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=213753335
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=214532961
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=227620945
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=detailed
+n5: 314840 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 118232 0x487C0A4: fftw_malloc_plain (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+  n6: 73408 0x4880658: fftw_mksolver (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n3: 34424 0x4885CC8: fftw_mksolver_ct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 15480 0x48867A6: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n1: 15480 0x4886812: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n0: 3464 in 4 places, all below massif's threshold (1.00%)
+   n2: 11776 0x48D3927: fftw_mksolver_hc2c (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 5888 0x48D4BFD: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+    n1: 5888 0x48D4C2A: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+   n0: 9784 in 47 places, all below massif's threshold (1.00%)
+   n1: 6120 0x488857C: fftw_mksolver_dft_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898A7: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 6120 0x48885BC: fftw_mksolver_dft_directbuf (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898BD: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 5184 0x48C2827: fftw_mksolver_hc2hc (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n0: 5184 in 3 places, all below massif's threshold (1.00%)
+  n2: 44384 0x487D8C6: ??? (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n2: 44384 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 44384 0x48C4800: fftw_rdft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 44384 0x496DFD0: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 44384 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 44384 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 44384 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 44384 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 44384 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 44384 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+            n1: 44384 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 44384 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n0: 44384 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 0 in 9 places, all below massif's threshold (1.00%)
+  n0: 440 in 11 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A538: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A545: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 32768 0x10A97B: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+ n1: 32768 0x10A98F: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+#-----------
+snapshot=36
+#-----------
+time=228400590
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=241542357
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=242321983
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=255469915
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=256249541
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=269402571
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=270182216
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=280795822
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=281575448
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=291444225
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=detailed
+n5: 314840 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 118232 0x487C0A4: fftw_malloc_plain (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+  n6: 73408 0x4880658: fftw_mksolver (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n3: 34424 0x4885CC8: fftw_mksolver_ct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 15480 0x48867A6: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n1: 15480 0x4886812: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n0: 3464 in 4 places, all below massif's threshold (1.00%)
+   n2: 11776 0x48D3927: fftw_mksolver_hc2c (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 5888 0x48D4BFD: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+    n1: 5888 0x48D4C2A: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+   n0: 9784 in 47 places, all below massif's threshold (1.00%)
+   n1: 6120 0x488857C: fftw_mksolver_dft_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898A7: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 6120 0x48885BC: fftw_mksolver_dft_directbuf (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898BD: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 5184 0x48C2827: fftw_mksolver_hc2hc (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n0: 5184 in 3 places, all below massif's threshold (1.00%)
+  n2: 44384 0x487D8C6: ??? (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n2: 44384 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 44384 0x48C4800: fftw_rdft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 44384 0x496DFD0: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 44384 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 44384 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 44384 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 44384 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 44384 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 44384 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+            n1: 44384 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 44384 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n0: 44384 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 0 in 9 places, all below massif's threshold (1.00%)
+  n0: 440 in 11 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A538: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A545: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 32768 0x10A97B: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+ n1: 32768 0x10A98F: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+#-----------
+snapshot=46
+#-----------
+time=292223851
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=301597780
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=302377425
+mem_heap_B=249272
+mem_heap_extra_B=51064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=312201482
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=312980085
+mem_heap_B=318992
+mem_heap_extra_B=51568
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=322210037
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=detailed
+n5: 314840 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 118232 0x487C0A4: fftw_malloc_plain (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+  n6: 73408 0x4880658: fftw_mksolver (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n3: 34424 0x4885CC8: fftw_mksolver_ct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 15480 0x48867A6: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n1: 15480 0x4886812: fftw_regsolver_ct_directw (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n3: 15480 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 6840 0x488576E: fftw_dft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+             n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+                n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n1: 6840 0x496DFC8: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 6840 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 6840 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 6840 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 6840 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 6840 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+            n1: 6840 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 6840 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n1: 6840 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+               n0: 6840 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+      n0: 1800 in 1 place, below massif's threshold (1.00%)
+    n0: 3464 in 4 places, all below massif's threshold (1.00%)
+   n2: 11776 0x48D3927: fftw_mksolver_hc2c (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 5888 0x48D4BFD: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+    n1: 5888 0x48D4C2A: fftw_regsolver_hc2c_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 5888 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 5888 in 4 places, all below massif's threshold (1.00%)
+   n0: 9784 in 47 places, all below massif's threshold (1.00%)
+   n1: 6120 0x488857C: fftw_mksolver_dft_direct (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898A7: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 6120 0x48885BC: fftw_mksolver_dft_directbuf (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 6120 0x48898BD: fftw_kdft_register (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 6120 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n0: 6120 in 3 places, all below massif's threshold (1.00%)
+   n1: 5184 0x48C2827: fftw_mksolver_hc2hc (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n0: 5184 in 3 places, all below massif's threshold (1.00%)
+  n2: 44384 0x487D8C6: ??? (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+   n2: 44384 0x48806EF: fftw_solvtab_exec (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+    n1: 44384 0x48C4800: fftw_rdft_conf_standard (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+     n1: 44384 0x496DFD0: fftw_configure_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+      n1: 44384 0x4975337: fftw_the_planner (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+       n1: 44384 0x496DABD: fftw_mkapiplan (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+        n1: 44384 0x4974F67: fftw_plan_many_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+         n1: 44384 0x49743B6: fftw_plan_dft (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+          n1: 44384 0x4974175: fftw_plan_dft_1d (in /usr/lib/x86_64-linux-gnu/libfftw3.so.3.6.10)
+           n1: 44384 0x10A786: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+            n1: 44384 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+             n1: 44384 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+              n0: 44384 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 0 in 9 places, all below massif's threshold (1.00%)
+  n0: 440 in 11 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A538: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 65536 0x10A545: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n2: 65536 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 65536 0x10B7ED: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 65536 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 32768 0x10A97B: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+ n1: 32768 0x10A98F: init_fft_cache (in /home/usr0/projects/option_tools/calculate_sv_v3)
+  n1: 32768 0x10B0EF: heston_call_fft (in /home/usr0/projects/option_tools/calculate_sv_v3)
+   n1: 32768 0x10B540: implied_params (in /home/usr0/projects/option_tools/calculate_sv_v3)
+    n0: 32768 0x10937D: main (in /home/usr0/projects/option_tools/calculate_sv_v3)
+#-----------
+snapshot=52
+#-----------
+time=322988640
+mem_heap_B=318992
+mem_heap_extra_B=51552
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=331825723
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=332604326
+mem_heap_B=318992
+mem_heap_extra_B=51568
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=342062800
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=342841403
+mem_heap_B=318992
+mem_heap_extra_B=51552
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=351777894
+mem_heap_B=314840
+mem_heap_extra_B=51112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=352556497
+mem_heap_B=318992
+mem_heap_extra_B=51568
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=361145799
+mem_heap_B=314840
+mem_heap_extra_B=51128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=361924402
+mem_heap_B=318992
+mem_heap_extra_B=51552
+mem_stacks_B=0
+heap_tree=empty

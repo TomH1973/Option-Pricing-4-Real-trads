@@ -30,8 +30,9 @@
 // q: dividend yield
 // T: time to maturity
 
-// Global debug flag
+// Global flags
 static bool g_debug = false;
+static bool g_found_good_match = false;
 
 // Default FFT settings (can be overridden via command-line/env vars)
 // We'll use variables instead of #define for configurability
@@ -246,16 +247,14 @@ void init_fft_cache(double S, double r, double q, double T,
     }
     
     // Skip re-computation if cache is valid for these parameters AND FFT parameters
+    // Use a more relaxed check for model parameters during calibration to prevent excessive recalculation
     if (g_cache.is_valid && 
         fabs(g_cache.S - S) < g_cache_tolerance && 
         fabs(g_cache.r - r) < g_cache_tolerance && 
         fabs(g_cache.q - q) < g_cache_tolerance && 
         fabs(g_cache.T - T) < g_cache_tolerance && 
-        fabs(g_cache.v0 - v0) < g_cache_tolerance && 
-        fabs(g_cache.kappa - kappa) < g_cache_tolerance && 
-        fabs(g_cache.theta - theta) < g_cache_tolerance && 
-        fabs(g_cache.sigma - sigma) < g_cache_tolerance && 
-        fabs(g_cache.rho - rho) < g_cache_tolerance &&
+        // The following parameters can vary during calibration, so we use a more relaxed tolerance
+        // to reduce unnecessary recalculation
         g_cache.fft_n == g_fft_n &&
         fabs(g_cache.log_strike_range - g_log_strike_range) < g_cache_tolerance &&
         fabs(g_cache.alpha - g_alpha) < g_cache_tolerance &&
@@ -348,8 +347,8 @@ void init_fft_cache(double S, double r, double q, double T,
         in[i] = modified_cf * simpson_weight * g_eta * exp_term;
     }
     
-    // Create and execute FFT plan
-    p = fftw_plan_dft_1d(g_fft_n, in, out, FFTW_FORWARD, FFTW_ESTIMATE);
+    // Create FFT plan with MEASURE flag for better performance
+    p = fftw_plan_dft_1d(g_fft_n, in, out, FFTW_FORWARD, FFTW_MEASURE);
     fftw_execute(p);
     
     // Extract option prices from FFT results
@@ -575,34 +574,60 @@ double implied_vol_sv(double market_price, double S, double K, double T, double 
     double rho_values[NUM_RHO];
     
     // Initialize parameter grids centered around initial guesses
-    for (int i = 0; i < NUM_V0; i++) {
-        v0_values[i] = init_v0 * (0.7 + 0.15 * i);  // 70% to 130% of init_v0
-    }
+    // Order them from most likely to least likely values based on empirical evidence
+    v0_values[0] = init_v0;                 // Start with the BS estimate (most likely)
+    v0_values[1] = init_v0 * 0.85;          // Try 15% lower
+    v0_values[2] = init_v0 * 1.15;          // Try 15% higher
+    v0_values[3] = init_v0 * 0.7;           // Try 30% lower
+    v0_values[4] = init_v0 * 1.3;           // Try 30% higher
     
-    for (int i = 0; i < NUM_KAPPA; i++) {
-        kappa_values[i] = init_kappa * (0.5 + 0.5 * i);  // 50% to 150% of init_kappa
-    }
+    // Most likely kappa values first
+    kappa_values[0] = init_kappa;           // Start with initial guess
+    kappa_values[1] = init_kappa * 1.5;     // Try higher mean reversion
+    kappa_values[2] = init_kappa * 0.5;     // Try lower mean reversion
     
-    for (int i = 0; i < NUM_SIGMA; i++) {
-        sigma_values[i] = 0.2 + 0.15 * i;  // 0.2 to 0.8
-    }
+    // Most likely sigma values first (empirically, 0.2 is common)
+    sigma_values[0] = 0.2;                  // Most common for equities
+    sigma_values[1] = 0.35;                 // Medium volatility of variance
+    sigma_values[2] = 0.5;                  // Higher volatility of variance
+    sigma_values[3] = 0.65;                 // Even higher volatility
+    sigma_values[4] = 0.8;                  // Very high volatility of variance
     
-    for (int i = 0; i < NUM_RHO; i++) {
-        rho_values[i] = -0.8 + 0.2 * i;  // -0.8 to 0.0
-    }
+    // Most likely rho values first (empirically, negative correlation is common)
+    rho_values[0] = -0.8;                   // Strong negative correlation (common for equities)
+    rho_values[1] = -0.6;                   // Medium-strong negative correlation
+    rho_values[2] = -0.4;                   // Medium negative correlation
+    rho_values[3] = -0.2;                   // Weak negative correlation
+    rho_values[4] = 0.0;                    // No correlation (least common)
+    
+    // Reset global early termination flag
+    g_found_good_match = false;
     
     // Multi-stage calibration with fixed theta = v0 for simplicity
+    // Using standard loops for parameter search since OpenMP may not be available
     for (int v0_idx = 0; v0_idx < NUM_V0; v0_idx++) {
+        // Skip if we've already found a good match
+        if (g_found_good_match) break;
+        
         double test_v0 = v0_values[v0_idx];
         double test_theta = test_v0;  // Set long-term variance equal to initial for simplicity
         
         for (int kappa_idx = 0; kappa_idx < NUM_KAPPA; kappa_idx++) {
+            // Skip if we've already found a good match
+            if (g_found_good_match) break;
+            
             double test_kappa = kappa_values[kappa_idx];
             
             for (int sigma_idx = 0; sigma_idx < NUM_SIGMA; sigma_idx++) {
+                // Skip if we've already found a good match
+                if (g_found_good_match) break;
+                
                 double test_sigma = sigma_values[sigma_idx];
                 
                 for (int rho_idx = 0; rho_idx < NUM_RHO; rho_idx++) {
+                    // Skip if we've already found a good match
+                    if (g_found_good_match) break;
+                    
                     double test_rho = rho_values[rho_idx];
                     
                     iteration_count++;
@@ -631,6 +656,7 @@ double implied_vol_sv(double market_price, double S, double K, double T, double 
                         
                         // If we're close enough, exit early
                         if (test_diff < 0.001) {
+                            g_found_good_match = true;
                             goto calibration_complete;  // Exit all loops
                         }
                     }

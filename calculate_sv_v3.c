@@ -286,8 +286,8 @@ void init_fft_cache(double S, double r, double q, double T,
         in[i] = modified_cf * simpson_weight * eta * exp(-I * v * log(S));
     }
     
-    // Create and execute FFT plan
-    p = fftw_plan_dft_1d(FFT_N, in, out, FFTW_FORWARD, FFTW_ESTIMATE);
+    // Create and execute FFT plan with MEASURE flag for better performance
+    p = fftw_plan_dft_1d(FFT_N, in, out, FFTW_FORWARD, FFTW_MEASURE);
     fftw_execute(p);
     
     // Extract option prices from FFT results

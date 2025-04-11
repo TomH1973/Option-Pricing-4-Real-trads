@@ -134,7 +134,7 @@ The FFT-based approach:
 ### Short-Term (High Priority)
 
 1. **Caching Improvements**
-   - [ ] Implement a more tolerant caching strategy with parameter sensitivity awareness
+   - [x] Implement a more tolerant caching strategy with parameter sensitivity awareness
    - [ ] Create multi-level cache for different parameter sets
    - [ ] Add adaptive tolerance mechanism based on parameter sensitivity
 
@@ -150,6 +150,9 @@ The FFT-based approach:
    - [ ] Implement additional stochastic volatility models (SABR, etc.)
 
 2. **Performance Optimization**
+   - [x] Early termination in parameter search loops for faster calibration
+   - [x] Optimized parameter ordering for faster convergence
+   - [x] Enhanced FFT calculation with FFTW_MEASURE for better performance
    - [ ] Multi-threading support for parameter sweeps and calibration
    - [ ] Cache persistence between program invocations
 

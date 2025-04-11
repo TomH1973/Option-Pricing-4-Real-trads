@@ -123,7 +123,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 # Display results with FFT parameter info
-echo   "=========== Option Pricing Summary ==========="
+echo   "=============== Option Pricing Summary ==============="
 printf "%-25s %12.2f\n" "Underlying Price:" "$UNDERLYING_PRICE"
 printf "%-25s %12.2f\n" "Strike:" "$STRIKE"
 printf "%-25s %16.6f\n" "Time to expiry (yrs):" "$T"
@@ -150,4 +150,4 @@ fi
 if [[ -n "$CACHE_TOL" ]]; then
   printf "%-25s %s\n" "Cache Tolerance:" "$CACHE_TOL"
 fi
-echo   "=============================================="
+echo   "======================================================"
