@@ -15,7 +15,7 @@ FFTW_CFLAGS := $(shell pkg-config --cflags fftw3 2>/dev/null || echo "-I/usr/inc
 FFTW_LIBS := $(shell pkg-config --libs fftw3 2>/dev/null || echo "-lfftw3 -lm")
 
 # Target executables
-TARGETS = calculate_iv calculate_iv_v1 calculate_iv_v2 calculate_sv calculate_sv_v2 calculate_sv_v3 calculate_sv_v4
+TARGETS = calculate_iv calculate_iv_v1 calculate_iv_v2 calculate_sv calculate_sv_v2 calculate_sv_v3 calculate_sv_v4 calculate_sv_v4_debug calculate_sv_v5
 
 # Default target
 all: $(TARGETS)
@@ -92,6 +92,14 @@ calculate_sv_v4: calculate_sv_v4.c
 	else \
 		$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS); \
 	fi
+
+calculate_sv_v4_debug: calculate_sv_v4_debug.c
+	@echo "Building debug version with error handling..."
+	$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS)
+
+calculate_sv_v5: calculate_sv_v5.c
+	@echo "Building optimized v5 with adaptive FFT parameters..."
+	$(CC) $(CFLAGS) $(FFTW_CFLAGS) -o $@ $< $(FFTW_LIBS)
 
 # Test targets
 test_iv: calculate_iv_v2
