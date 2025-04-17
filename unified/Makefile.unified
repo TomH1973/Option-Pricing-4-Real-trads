@@ -1,0 +1,70 @@
+# Makefile for the Unified Option Pricing System
+
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -std=c99 -pedantic -fPIC
+LDFLAGS = -lm -lpthread -lfftw3 -lcurl -ljansson
+
+# Directories
+SRC_DIR = src
+INCLUDE_DIR = include
+BIN_DIR = bin
+OBJ_DIR = obj
+TEST_DIR = tests
+
+# Source files (automatically find all .c files in the source directory)
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
+
+# Main executable
+MAIN = $(BIN_DIR)/unified_pricer
+
+# Ensure directories exist
+DIRS = $(BIN_DIR) $(OBJ_DIR)
+
+# Phony targets
+.PHONY: all clean test check dirs deps
+
+# Default target
+all: dirs deps $(MAIN)
+
+# Create necessary directories
+dirs:
+	@mkdir -p $(DIRS)
+
+# Check for required dependencies
+deps:
+	@echo "Checking for required dependencies..."
+	@which curl-config >/dev/null 2>&1 || (echo "Error: libcurl development package not found" && exit 1)
+	@echo "#include <jansson.h>" | $(CC) -E - >/dev/null 2>&1 || (echo "Error: jansson development package not found" && exit 1)
+	@echo "All dependencies found."
+
+# Build the main executable
+$(MAIN): $(OBJS)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+# Compile source files to object files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+
+# Run tests
+test: $(MAIN)
+	@echo "Running basic tests..."
+	@./$(TEST_DIR)/test_basic.sh
+
+# Clean the build
+clean:
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
+
+# Check for memory leaks using valgrind
+check: $(MAIN)
+	@echo "Running memory check with valgrind..."
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(MAIN)
+
+# Install the system
+install: $(MAIN)
+	@echo "Installing unified option pricing system..."
+	@mkdir -p $(HOME)/bin
+	@cp $(MAIN) $(HOME)/bin/
+	@cp scripts/option_pricer.sh $(HOME)/bin/
+	@echo "Installation complete. Make sure $(HOME)/bin is in your PATH." 
