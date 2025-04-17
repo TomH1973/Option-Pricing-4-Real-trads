@@ -2,7 +2,80 @@
 
 A suite of command-line tools for calculating option prices and implied volatilities using both Black-Scholes and Heston stochastic volatility models.
 
-## Overview
+## New! Unified Option Pricing System
+
+The project now includes a comprehensive **Unified Option Pricing System** that standardizes all option pricing functionality and adds powerful new features.
+
+### Unified System Overview
+
+The Unified Option Pricing System provides a standardized API and interfaces for all option pricing models, with significant enhancements:
+
+- **Unified Command Interface**: A single command for all pricing models with consistent parameter formats
+- **Market Data Integration**: Automatic price, dividend yield, and risk-free rate retrieval by ticker symbol
+- **Multiple Data Sources**: Support for Alpha Vantage, Finnhub, and Polygon market data
+- **Historical Volatility**: Automatic calculation of historical volatility based on option expiry
+- **Comprehensive Documentation**: Extensive user guides, API references, and examples
+
+### Getting Started with the Unified System
+
+1. **Build the unified system**:
+   ```bash
+   cd unified
+   make -f Makefile.unified
+   ```
+
+2. **Basic usage**:
+   ```bash
+   # Price a call option with explicit parameters
+   ./unified/scripts/option_pricer.sh 100 105 30 0.05 0.01
+   
+   # Price using market data (automatically fetches AAPL price and dividend)
+   ./unified/scripts/option_pricer.sh --ticker AAPL 0 185 45
+   
+   # Price with historical volatility calculation
+   ./unified/scripts/option_pricer.sh --ticker SPY --auto-vol 0 420 30
+   
+   # Price using the Heston model with FFT
+   ./unified/scripts/option_pricer.sh -m heston -n fft 100 105 30 0.05 0.01
+   ```
+
+3. **Documentation**: Comprehensive documentation is available in the `unified/docs` directory:
+   - [User Guide](unified/docs/user/user_guide.md): Complete user instructions
+   - [Market Data Guide](unified/docs/user/market_data_guide.md): Market data integration details
+   - [API Reference](unified/docs/api/api_reference.md): Detailed API documentation
+   - [Developer Guide](unified/docs/dev/developer_guide.md): Extending the system
+   - [Examples](unified/docs/examples/basic_examples.md): Practical usage examples
+
+### Key Features of the Unified System
+
+- **Standardized API**: Consistent C and shell interfaces for all models
+- **Ticker-Based Pricing**: Specify ticker symbols instead of manual parameters
+- **Automatic Data Retrieval**: Current prices, dividend yields, risk-free rates
+- **Historical Data Analysis**: Calculate historical volatility based on past prices
+- **Multiple Pricing Models**: Black-Scholes and Heston with different numerical methods
+- **Greeks Calculation**: Delta, gamma, theta, vega, and rho for risk management
+- **Caching System**: Efficient caching of market data to improve performance
+- **Error Handling**: Comprehensive error handling and reporting
+- **Data Source Redundancy**: Support for multiple market data providers
+
+### Unified System vs. Legacy Tools
+
+| Feature | Unified System | Legacy Tools |
+|---------|----------------|--------------|
+| **API Consistency** | Single standardized API | Different interfaces per version |
+| **Market Data** | Built-in integration | Manual parameter input only |
+| **Ticker Support** | Yes, with auto-fetching | No |
+| **Documentation** | Comprehensive | Basic |
+| **Configuration** | User-configurable | Fixed |
+| **Error Handling** | Standardized errors | Basic error handling |
+| **Greeks** | Comprehensive calculation | Limited |
+| **Extensibility** | Modular design | Fixed implementation |
+
+For new projects, we strongly recommend using the Unified Option Pricing System.
+
+---
+
+## Overview of Legacy Tools
 
 This project provides robust implementations of various option pricing models, with a focus on both accuracy and computational efficiency. It includes both traditional Black-Scholes implementations and more advanced stochastic volatility models using both quadrature and Fast Fourier Transform (FFT) approaches.
 
